@@ -43,6 +43,7 @@ def predict_and_save_image(path_test_car, output_image_path):
                 cv2.putText(image, f'{confidence*100:.2f}%', (x1, y1 - 10), 
                             cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 0, 0), 2)
             i=i+1
+        st.write("jkh")
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
         cv2.imwrite(output_image_path, image)
         return output_image_path
