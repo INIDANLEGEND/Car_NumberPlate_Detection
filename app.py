@@ -32,13 +32,17 @@ def predict_and_save_image(path_test_car, output_image_path):
         results = model.predict(path_test_car, device='cpu')
         image = cv2.imread(path_test_car)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        st.write("l")
+        i=0
         for result in results:
+            st.write(i)
             for box in result.boxes:
                 x1, y1, x2, y2 = map(int, box.xyxy[0])
                 confidence = box.conf[0]
                 cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
                 cv2.putText(image, f'{confidence*100:.2f}%', (x1, y1 - 10), 
                             cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 0, 0), 2)
+            i=i+1
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
         cv2.imwrite(output_image_path, image)
         return output_image_path
@@ -116,6 +120,7 @@ if uploaded_file is not None:
             f.write(uploaded_file.getbuffer())
         st.write("Processing...")
         result_path = process_media(input_path, output_path)
+        st.write("hi")
         if result_path:
             if input_path.endswith(('.mp4', '.avi', '.mov', '.mkv')):
                 video_file = open(result_path, 'rb')
