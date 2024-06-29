@@ -116,7 +116,7 @@ if uploaded_file is not None:
             f.write(uploaded_file.getbuffer())
         st.write("Processing...")
         result_path = process_media(input_path, output_path)
-        st.write("hi")
+        # st.write("hi")
         if result_path:
             if input_path.endswith(('.mp4', '.avi', '.mov', '.mkv')):
                 video_file = open(result_path, 'rb')
