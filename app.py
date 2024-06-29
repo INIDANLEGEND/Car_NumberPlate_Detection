@@ -109,8 +109,8 @@ def process_media(input_path, output_path):
         return None
 
 if uploaded_file is not None:
-    input_path = os.path.join("temp", uploaded_file.name)
-    output_path = os.path.join("temp", f"output_{uploaded_file.name}")
+    input_path = os.path.join(uploaded_file.name)
+    output_path = os.path.join( f"output_{uploaded_file.name}")
     try:
         with open(input_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
