@@ -58,10 +58,10 @@ def predict_and_plot_video(video_path, output_path):
     str: The path to the saved output video file.
     """
     try:
-        # cap = cv2.VideoCapture(video_path)
-        # if not cap.isOpened():
-        #     st.error(f"Error opening video file: {video_path}")
-        #     return None
+        cap = cv2.VideoCapture(video_path)
+        if not cap.isOpened():
+            st.error(f"Error opening video file: {video_path}")
+            return None
         frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         fps = int(cap.get(cv2.CAP_PROP_FPS))
