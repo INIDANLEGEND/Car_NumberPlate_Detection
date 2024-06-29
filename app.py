@@ -13,7 +13,7 @@ uploaded_file = st.file_uploader("Upload an image or video", type=["jpg", "jpeg"
 
 # Load YOLO model
 try:
-    model = YOLO('best_license_plate_model.pt')  # Replace with the path to your trained YOLO model
+    model = YOLO('best.pt')  # Replace with the path to your trained YOLO model
 except Exception as e:
     st.error(f"Error loading YOLO model: {e}")
 
@@ -116,6 +116,7 @@ if uploaded_file is not None:
             f.write(uploaded_file.getbuffer())
         st.write("Processing...")
         result_path = process_media(input_path, output_path)
+        st.write("hi")
         if result_path:
             if input_path.endswith(('.mp4', '.avi', '.mov', '.mkv')):
                 video_file = open(result_path, 'rb')
